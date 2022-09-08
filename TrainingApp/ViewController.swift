@@ -8,17 +8,62 @@
 import SnapKit
 import UIKit
 
+extension UIEdgeInsets {
+    func inverted() -> UIEdgeInsets {
+        return UIEdgeInsets(top: -top, left: -left,
+                            bottom: -bottom, right: -right)
+    }
+}
+
 final class ControlView: UIControl {
     
+//    let insets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    
+    //// Увеличивает область кажатия на insets
+//    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+//        let rect = bounds.inset(by: insets.inverted())
+//
+//        return rect.contains(point)
+//    }
+    
+    
+    //// конвертирует область нажатия во фрейм родителя, так чтобы выступающие вьюхи считывались
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let inside = super.point(inside: point, with: event)
+        if !inside {
+            for subview in subviews {
+                let pointInSubview = subview.convert(point, from: self)
+                if subview.point(inside: pointInSubview, with: event) {
+                    return true
+                }
+            }
+        }
+        return inside
+    }
+    
+}
+
+class TouchesPassView: UIControl {
+    
+    //// Отключает обработку нажатия на той или иной области. (Может отключить нажатие у родителя)
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let view = super.hitTest(point, with: event)
+        if view === self {
+            return nil
+        }
+        return view
+    }
 }
 
 class ViewController1: UIViewController {
     
-    let viewA = ControlView()
+    let viewA = TouchesPassView()
+    
     let viewB = ControlView()
     let viewB1 = ControlView()
     let viewB2 = ControlView()
-    let viewC = ControlView()
+    
+    let viewC = TouchesPassView()
     let viewC1 = ControlView()
     let viewC2 = ControlView()
     
