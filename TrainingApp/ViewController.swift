@@ -10,22 +10,22 @@ import UIKit
 
 extension UIEdgeInsets {
     func inverted() -> UIEdgeInsets {
-        return UIEdgeInsets(top: -top, left: -left,
-                            bottom: -bottom, right: -right)
+        return UIEdgeInsets(top: -top, left: -left, bottom: -bottom, right: -right)
+    }
+}
+
+final class increasedTabControlView: UIControl {
+    let insets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    
+    // Увеличивает область кажатия на insets
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let rect = bounds.inset(by: insets.inverted())
+        
+        return rect.contains(point)
     }
 }
 
 final class ControlView: UIControl {
-    
-//    let insets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    
-    //// Увеличивает область кажатия на insets
-//    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-//        let rect = bounds.inset(by: insets.inverted())
-//
-//        return rect.contains(point)
-//    }
-    
     
     //// конвертирует область нажатия во фрейм родителя, так чтобы выступающие вьюхи считывались
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
@@ -61,7 +61,7 @@ class ViewController1: UIViewController {
     
     let viewB = ControlView()
     let viewB1 = ControlView()
-    let viewB2 = ControlView()
+    let viewB2 = BlinkableView()
     
     let viewC = TouchesPassView()
     let viewC1 = ControlView()
@@ -87,12 +87,18 @@ class ViewController1: UIViewController {
         viewA.addTarget(nil, action: #selector(printA), for: .touchUpInside)
         
         viewB.addTarget(nil, action: #selector(printB), for: .touchUpInside)
+        
         viewB1.addTarget(nil, action: #selector(printB1), for: .touchUpInside)
+        // viewB2.addTarget(nil, action: #selector(BlinkableView.performBlinkAction), for: .touchUpInside)
         viewB2.addTarget(nil, action: #selector(printB2), for: .touchUpInside)
+       // UIApplication.shared.sendAction(#selector(BlinkableView.performBlinkAction), to: nil, from: viewB2, for: nil)
         
         viewC.addTarget(nil, action: #selector(printC), for: .touchUpInside)
-        viewC1.addTarget(nil, action: #selector(printC1), for: .touchUpInside)
+        viewC1.addTarget(nil, action: #selector(MyViewController2.myCustomMethod), for: .touchUpInside)
         viewC2.addTarget(nil, action: #selector(printC2), for: .touchUpInside)
+        
+//        let newVC = NewViewController()
+//        UIApplication.shared.push(vc: newVC)
                 
     }
     
@@ -226,6 +232,8 @@ class ViewController1: UIViewController {
     
     @objc private func printB(_ target: ControlView) {
         print("view B tapped!")
+        UIApplication.shared.sendAction(#selector(BlinkableView.performBlinkAction), to: nil, from: nil, for: nil)
+        //Will precisely blink the last BlinkableView that had select() called.
     }
     
     @objc private func printB1(_ target: ControlView) {
@@ -234,6 +242,7 @@ class ViewController1: UIViewController {
     
     @objc private func printB2(_ target: ControlView) {
         print("view B2 tapped!")
+        UIApplication.shared.sendAction(#selector(BlinkableView.performBlinkAction), to: nil, from: viewB2, for: nil)
     }
     
     @objc private func printC(_ target: ControlView) {

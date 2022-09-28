@@ -14,6 +14,7 @@
 		4D5C3C57288E7F5000D1BDCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D5C3C55288E7F5000D1BDCE /* Main.storyboard */; };
 		4D5C3C59288E7F5100D1BDCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D5C3C58288E7F5100D1BDCE /* Assets.xcassets */; };
 		4D5C3C5C288E7F5100D1BDCE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D5C3C5A288E7F5100D1BDCE /* LaunchScreen.storyboard */; };
+		4D84B92E28CA07C4007D7C05 /* ResponderChainPractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84B92D28CA07C4007D7C05 /* ResponderChainPractice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		4D5C3C58288E7F5100D1BDCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D5C3C5B288E7F5100D1BDCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D5C3C5D288E7F5100D1BDCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D84B92D28CA07C4007D7C05 /* ResponderChainPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponderChainPractice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				4D5C3C4F288E7F5000D1BDCE /* AppDelegate.swift */,
 				4D5C3C51288E7F5000D1BDCE /* SceneDelegate.swift */,
 				4D5C3C53288E7F5000D1BDCE /* ViewController.swift */,
+				4D84B92D28CA07C4007D7C05 /* ResponderChainPractice.swift */,
 				4D5C3C55288E7F5000D1BDCE /* Main.storyboard */,
 				4D5C3C58288E7F5100D1BDCE /* Assets.xcassets */,
 				4D5C3C5A288E7F5100D1BDCE /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 				4D5C3C54288E7F5000D1BDCE /* ViewController.swift in Sources */,
 				4D5C3C50288E7F5000D1BDCE /* AppDelegate.swift in Sources */,
 				4D5C3C52288E7F5000D1BDCE /* SceneDelegate.swift in Sources */,
+				4D84B92E28CA07C4007D7C05 /* ResponderChainPractice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
